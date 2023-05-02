@@ -1,0 +1,52 @@
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: VPC
+metadata:
+  name: vpc
+  labels:
+    vpc: vpc
+spec:
+  forProvider:
+    cidrBlock: 10.0.0.0/16
+    region: us-east-1
+---
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+  name: subnet-a
+  labels:
+    subnet: a
+spec:
+  forProvider:
+    availabilityZone: us-east-1a
+    cidrBlock: 10.0.0.0/24
+    region: us-east-1
+    vpcIdRef:
+      name: vpc
+---
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+  name: subnet-b
+  labels:
+    subnet: b
+spec:
+  forProvider:
+    availabilityZone: us-east-1b
+    cidrBlock: 10.0.1.0/24
+    region: us-east-1
+    vpcIdRef:
+      name: vpc
+---
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+  name: subnet-c
+  labels:
+    subnet: c
+spec:
+  forProvider:
+    availabilityZone: us-east-1c
+    cidrBlock: 10.0.2.0/24
+    region: us-east-1
+    vpcIdRef:
+      name: vpc

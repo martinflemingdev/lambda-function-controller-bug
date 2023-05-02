@@ -1,0 +1,83 @@
+apiVersion: lambda.aws.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function
+spec:
+  forProvider:
+    code:
+      s3Bucket: lambda-to-rds
+      s3Key: hello_world.zip
+    handler: hello_world.handler
+    region: us-east-1
+    roleRef:
+      name: role
+    runtime: python3.7
+    vpcConfig:
+      securityGroupIDRefs:
+        - name: sg2
+      subnetIDRefs:
+        - name: subnet-a
+        - name: subnet-b
+        - name: subnet-c
+---
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: sg2
+spec:
+  forProvider:
+    description: sg2
+    groupName: sg2
+    region: us-east-1
+    vpcIdRef:
+      name: vpc
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Role
+metadata:
+  name: role
+spec:
+  forProvider:
+    assumeRolePolicyDocument: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "lambda.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+      }
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Policy
+metadata:
+  name: policy
+spec:
+  forProvider:
+    document: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+              "Effect": "Allow",
+              "Action": ["s3:*", "rds:*", "ec2:*"],
+              "Resource": "*"
+          }
+        ]
+      }
+    name: policy
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: role-policy-attachment
+spec:
+  forProvider:
+    policyArnRef: 
+      name: policy
+    roleNameRef:
+      name: role

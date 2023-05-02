@@ -1,0 +1,101 @@
+{
+    "eventVersion": "1.08",
+    "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAQFRB7FOZWWCEXNCKX",
+        "arn": "arn:aws:iam::011882408883:user/iamadmin",
+        "accountId": "011882408883",
+        "accessKeyId": "AKIAQFRB7FOZQZ5MUQK3",
+        "userName": "iamadmin"
+    },
+    "eventTime": "2023-04-28T15:03:59Z",
+    "eventSource": "lambda.amazonaws.com",
+    "eventName": "UpdateFunctionConfiguration20150331v2",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "12.237.26.122",
+    "userAgent": "aws-sdk-go/1.44.174 (go1.18.10; linux; amd64) crossplane-provider-aws/v0.39.0",
+    "requestParameters": {
+        "functionName": "function",
+        "role": "arn:aws:iam::011882408883:role/role",
+        "handler": "hello_world.handler",
+        "timeout": 3,
+        "memorySize": 128,
+        "vpcConfig": {
+            "subnetIds": [
+                "subnet-096518542a42ec783",
+                "subnet-0e22d39fdb6da837f",
+                "subnet-0ecbed52ebf2663d2"
+            ],
+            "securityGroupIds": [
+                "sg-018d2ec68d1f270ed"
+            ],
+            "ipv6AllowedForDualStack": false
+        },
+        "environment": {},
+        "runtime": "python3.7",
+        "tracingConfig": {
+            "mode": "PassThrough"
+        }
+    },
+    "responseElements": {
+        "functionName": "function",
+        "functionArn": "arn:aws:lambda:us-east-1:011882408883:function:function",
+        "runtime": "python3.7",
+        "role": "arn:aws:iam::011882408883:role/role",
+        "handler": "hello_world.handler",
+        "codeSize": 259,
+        "description": "",
+        "timeout": 3,
+        "memorySize": 128,
+        "lastModified": "2023-04-28T15:03:59.000+0000",
+        "codeSha256": "2hg0vXcTVZTcBuEiRV8Yx1VBUYtwxZ9HxuVNts1yjpc=",
+        "version": "$LATEST",
+        "vpcConfig": {
+            "subnetIds": [
+                "subnet-0ecbed52ebf2663d2",
+                "subnet-096518542a42ec783",
+                "subnet-0e22d39fdb6da837f"
+            ],
+            "securityGroupIds": [
+                "sg-018d2ec68d1f270ed"
+            ],
+            "vpcId": "vpc-0265d80c52b97fbc6",
+            "ipv6AllowedForDualStack": false
+        },
+        "environment": {},
+        "tracingConfig": {
+            "mode": "PassThrough"
+        },
+        "revisionId": "ebc6e76c-036a-4b50-b3eb-610dc1bb538c",
+        "state": "Active",
+        "lastUpdateStatus": "InProgress",
+        "lastUpdateStatusReason": "The function is being created.",
+        "lastUpdateStatusReasonCode": "Creating",
+        "packageType": "Zip",
+        "architectures": [
+            "x86_64"
+        ],
+        "ephemeralStorage": {
+            "size": 512
+        },
+        "snapStart": {
+            "applyOn": "None",
+            "optimizationStatus": "Off"
+        },
+        "runtimeVersionConfig": {
+            "runtimeVersionArn": "arn:aws:lambda:us-east-1::runtime:db8ceeb246f78804a6e51aebc5c464fae32856b9b393f87521ccc7e003142a55"
+        }
+    },
+    "requestID": "e65171cd-3207-4868-ab8c-83adc6bbbfc7",
+    "eventID": "2c5f7e5f-79e8-4cc4-b9b4-366fb21c1115",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "011882408883",
+    "eventCategory": "Management",
+    "tlsDetails": {
+        "tlsVersion": "TLSv1.2",
+        "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+        "clientProvidedHostHeader": "lambda.us-east-1.amazonaws.com"
+    }
+}
